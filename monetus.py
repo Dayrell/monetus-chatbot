@@ -25,7 +25,7 @@ def handle_verification():
 def handle_messages():  
     print ("Handling Messages")
     payload = request.get_data()
-    print (payload)
+
     for sender, message in messaging_events(payload):
       print ("Incoming from %s: %s " % (sender, message))
       send_message(facebook_key, sender, message)
@@ -34,11 +34,14 @@ def handle_messages():
 def messaging_events(payload):
     data = json.loads(payload)
     messaging_events = data["entry"][0]["messaging"]
+
     for event in messaging_events:
-      if "message" in event and "text" in event["message"]:
-        yield event["sender"]["id"], event["message"]["text"].encode('unicode_escape')
-      else:
-        yield event["sender"]["id"], "I can't echo this"
+        if "message" in event and "text" in event["message"]:
+            yield event["sender"]["id"], event["message"]["text"].encode('unicode_escape')
+        elif "postback" in event and "payload" in event["postback"]:
+            yield event["sender"]["id"], set_default_messages(event["postback"]["payload"]).encode('unicode_escape')
+        else:
+            yield event["sender"]["id"], "I can't echo this"
 
 
 def send_message(facebook_key, sender, text):
@@ -63,13 +66,14 @@ def send_to_facebook(token, recipient, text):
         print (r.text)
 
 
-# cronjob
-# cron = Scheduler(daemon=True)
-# # Explicitly kick off the background thread
-# cron.start()
-# cron.add_cron_job(job_function, day_of_week='mon-fri', hour=20, minute=30)
-# cron.shutdown(wait=False)
-# atexit.register(lambda: cron.shutdown(wait=False))
+def set_default_messages(payload):
+    if payload == 'SD':
+        return ('sd')
+    elif payload == 'S':
+        return ('s')
+    else:
+        return ('ajuda')
+        
 
 
 if __name__ == '__main__':
