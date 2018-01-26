@@ -1,0 +1,34 @@
+{
+    "useful": [
+        {
+            "name": "ajuda",
+            "text": "Comandos:\n\n▪ Composição: Lista todas as ações do fundo\n▪ Status (ou s): Informa a valorização atual das ações do fundo\n▪ Status detalhado (ou sd): Informa a valorização atual de cada ação do fundo\n▪ Sair: para obter informação sobre como parar de receber minhas mensagens"
+        },
+        {
+            "name": "erro",
+            "text": "Uma ou mais ações retornaram erro. Veja o status detalhado:\n"
+        },
+        {
+            "name": "update_diario",
+            "text": "Aqui está o seu update diário do fundo Monetus FIA! :)\n\n"
+        },
+        {
+            "name": "sair",
+            "text": "Não me abandone! Eu juro que só envio uma mensagem automática por dia com o resumo da valorização do fundo! :(\n\nSe realmente não quer receber mais as nossas mensagens, silencie essa conversa ou bloqueie esse bot. (tutorial: http://www.techtudo.com.br/dicas-e-tutoriais/noticia/2015/09/como-bloquear-pessoas-no-facebook-messenger-e-fugir-de-amigos-chatos.html)\n\n"
+        }
+    ],
+    "random": [
+        {
+            "name": "oi",
+            "text": "Oi! :P\nEstá com alguma dúvida? Envie 'ajuda' para ver os comandos disponíveis"
+        },
+        {
+            "name": "invalido",
+            "text": "Comando inválido. Envie 'ajuda' para ver todos os comandos disponíveis"
+        },
+        {
+            "name": "composicao",
+            "text": "A composição do fundo é: \n"
+        }
+    ]
+}
