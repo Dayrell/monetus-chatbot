@@ -12,8 +12,8 @@ Os principais comandos do Monetus Chatbot estão listados abaixo.
  - Ajuda: retorna todos os comandos disponíveis
 
 ## To-do list
-[ ] Implementar um banco de dados para permitir os usuários cadastrarem para receber updates diários.
-[ ] Integrar ao Twitter
+- [ ] Implementar um banco de dados para permitir os usuários cadastrarem para receber updates diários.
+- [ ] Integrar ao Twitter
 
 
 
