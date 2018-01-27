@@ -10,7 +10,7 @@ def timed_job():
     companies = json.load(open('stocks.json'))
     get_stocks(companies)
 
-    jsonFile = open("updated_stocks.json", "w+")
+    jsonFile = open("/tmp/updated_stocks.json", "w+")
     jsonFile.write(json.dumps(companies))
     jsonFile.close()
 
