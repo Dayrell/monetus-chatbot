@@ -4,7 +4,7 @@ from message_handling import get_stocks
 import os, errno
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', seconds=15)
+@sched.scheduled_job('interval', seconds=120)
 def timed_job():
     
 
