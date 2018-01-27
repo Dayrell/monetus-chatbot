@@ -41,8 +41,7 @@ def get_composicao(companies):
 
 def status(companies):
 
-    companies_status = json.load(open('tmp/updated_stocks.json'))
-    print(companies_status)
+    companies_status = get_stocks(companies)
 
     status, error = get_appreciation(companies_status)
 
@@ -52,7 +51,7 @@ def status(companies):
     return status
 
 def detailed_status(companies):
-    companies_status = json.load(open('tmp/updated_stocks.json'))
+    companies_status = get_stocks(companies)
 
     status, error = get_appreciation(companies_status)
 

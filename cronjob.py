@@ -1,28 +1,15 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 import json, requests, simplejson
 from message_handling import get_stocks
-import os, errno
+
 sched = BlockingScheduler()
 
-@sched.scheduled_job('interval', seconds=120)
+@sched.scheduled_job('interval', seconds=60)
 def timed_job():
-    
-
-    if not os.path.exists('tmp/'):
-        print('criando')
-        os.makedirs('tmp/')
-    else:
-        print('nananna')
-    
     companies = json.load(open('stocks.json'))
-    companies = get_stocks(companies)
+    get_stocks(companies)
 
-    jsonFile = open("tmp/updated_stocks.json", "w+")
-    jsonFile.write(json.dumps(companies))
-    jsonFile.close()
-
-    companies_status = json.load(open('tmp/updated_stocks.json'))
-    print(companies_status)
+    print(companies)
 
 sched.start()
 
