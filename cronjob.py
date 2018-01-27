@@ -15,10 +15,10 @@ def timed_job():
         print('nananna')
     
     companies = json.load(open('stocks.json'))
-    get_stocks(companies)
+    companies = get_stocks(companies)
 
     jsonFile = open("tmp/replayScript.json", "w+")
-    jsonFile.write(json.dumps(data))
+    jsonFile.write(json.dumps(companies))
     jsonFile.close()
 
     print(companies)
