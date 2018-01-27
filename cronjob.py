@@ -17,9 +17,12 @@ def timed_job():
     companies = json.load(open('stocks.json'))
     companies = get_stocks(companies)
 
-    jsonFile = open("tmp/replayScript.json", "w+")
+    jsonFile = open("tmp/updated_stocks.json", "w+")
     jsonFile.write(json.dumps(companies))
     jsonFile.close()
+
+    companies_status = json.load(open('tmp/updated_stocks.json'))
+    print(companies_status)
 
 sched.start()
 
