@@ -15,6 +15,10 @@
         {
             "name": "sair",
             "text": "Não me abandone! Eu juro que só envio uma mensagem automática por dia com o resumo da valorização do fundo! :(\n\nSe realmente não quer receber mais as nossas mensagens, silencie essa conversa ou bloqueie esse bot. (tutorial: http://www.techtudo.com.br/dicas-e-tutoriais/noticia/2015/09/como-bloquear-pessoas-no-facebook-messenger-e-fugir-de-amigos-chatos.html)\n\n"
+        },
+        {
+            "name": "website",
+            "text": "Veja mais detalhes e o histórico em nosso site: http://alepmaros.me/monetus/"
         }
     ],
     "random": [

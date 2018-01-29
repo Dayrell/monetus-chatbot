@@ -58,13 +58,17 @@ def detailed_status(companies):
     if (error):
         status = error_message(status, companies)
     
-    status += '\n'
+    message += ''
 
     for stock in companies['stocks']:
-        status += '\n▪ '
-        status += stock['code']
-        status += ': '
-        status += str(stock['status']['cp']) + '%'
+        message += '\n▪ '
+        message += stock['code']
+        message += ': '
+        message += str(stock['status']['cp']) + '%'
+
+    message += '\n\n'
+    message += status + '\n'
+    message += find_text('website', 'useful')
     
     return status
 
