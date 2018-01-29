@@ -66,9 +66,10 @@ def detailed_status(companies):
         message += ': '
         message += str(stock['status']['cp']) + '%'
 
-    message += '\n\n'
-    message += 'Valorização total nesse momento: ' + status + '\n'
-    message += find_text('website', 'useful')
+    message += '\n'
+
+    message += find_text('website', 'useful') + '\n\n'
+    message += 'Valorização total nesse momento: ' + status
     
     return message
 
