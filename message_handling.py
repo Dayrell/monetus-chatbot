@@ -70,7 +70,7 @@ def detailed_status(companies):
     message += status + '\n'
     message += find_text('website', 'useful')
     
-    return status
+    return message
 
 
 # Return error message case one or more stocks has errors and send detailed infos to user
