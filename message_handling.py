@@ -48,7 +48,7 @@ def status(companies):
     if (error):
         status = error_message(status, companies)
 
-    return status
+    return 'Valorização total nesse momento: *' + status + '*'
 
 def detailed_status(companies):
     companies_status = get_stocks(companies)
@@ -67,7 +67,7 @@ def detailed_status(companies):
         message += str(stock['status']['cp']) + '%'
 
     message += '\n\n'
-    message += status + '\n'
+    message += 'Valorização total nesse momento: *' + status + '*\n'
     message += find_text('website', 'useful')
     
     return message
