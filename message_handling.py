@@ -58,7 +58,7 @@ def detailed_status(companies):
     if (error):
         status = error_message(status, companies)
     
-    message += ''
+    message = ''
 
     for stock in companies['stocks']:
         message += '\n▪ '
