@@ -64,7 +64,7 @@ def detailed_status(companies):
         message += '\n▪ '
         message += stock['code']
         message += ': '
-        message += str(stock['status']['cp']) + '%'
+        message += str(stock['status']) + '%'
 
     message += '\n'
 
@@ -85,7 +85,7 @@ def error_message(status, companies):
         if (stock['status']['valid'] != 0):
             errormessage += 'ERRO!\n'
         else:
-            errormessage += str(stock['status']['cp']) + '%\n'
+            errormessage += str(stock['status']) + '%\n'
     
     return errormessage
 
