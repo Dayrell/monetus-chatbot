@@ -1,5 +1,6 @@
 import json, requests, simplejson
 from pprint import pprint
+from datetime import datetime, time
 
 # return a string with the response
 def define_response(usertext):
@@ -41,17 +42,17 @@ def get_composicao(companies):
 
 def status(companies):
     print('1')
-    companies_status = get_stocks(companies)
+    companies_status, updatedat = get_stocks(companies)
     print('2')
     status, error = get_appreciation(companies_status)
     print('3')
     if (error):
         status = error_message(status, companies)
 
-    return 'Valorização total nesse momento: ' + status
+    return 'Valorização: ' + status
 
 def detailed_status(companies):
-    companies_status = get_stocks(companies)
+    companies_status, updatedat = get_stocks(companies)
 
     status, error = get_appreciation(companies_status)
 
@@ -69,10 +70,14 @@ def detailed_status(companies):
     message += '\n'
 
     message += find_text('website', 'useful') + '\n\n'
-    message += 'Valorização total nesse momento: ' + status
+    message += 'Valorização: ' + status
+    check_time()
     
     return message
 
+def check_time():
+    if (time(22,30) <= now.time() <= time(23,30)):
+        print('\n\n\n\n\noi\n\n\n')
 
 # Return error message case one or more stocks has errors and send detailed infos to user
 def error_message(status, companies):
@@ -91,7 +96,7 @@ def error_message(status, companies):
 
 def get_stocks(companies):
     data = json.loads(requests.get('http://alepmaros.me/monetus/stocks/').content)
-    
+    updatedat = data['last_day_updated']
 
     for stock in data['last_stocks_updated']:
         dataCode = stock['fields']['code']
@@ -100,7 +105,7 @@ def get_stocks(companies):
             if (company['code'] == dataCode):
                 company['status'] = stock['fields']['vcp']
 
-    return companies
+    return companies, updatedat
 
 # valid: 0 caso seja um retorno válido
 # valid: 1 caso algum atributo do objeto
