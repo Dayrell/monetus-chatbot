@@ -101,6 +101,7 @@ def get_stocks(companies):
                 company['status'] = stock['fields']['vcp']
 
     return companies
+
 # valid: 0 caso seja um retorno válido
 # valid: 1 caso algum atributo do objeto
 # valid: 2 caso haja uma falha na API
@@ -132,12 +133,9 @@ def get_appreciation(companies):
     total = 0
     error = False
     for stock in companies['stocks']:
-        if (stock['status']['valid'] == 0):
-            cp = stock['status']['cp']
-            share = stock['share']
-            total += (share / 100) * cp
-        else:
-            error = True
+        cp = stock['status']['cp']
+        share = stock['share']
+        total += (share / 100) * cp
 
     appreciation = str(round(total, 2)) + '%'
     
