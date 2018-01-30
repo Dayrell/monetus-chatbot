@@ -40,11 +40,11 @@ def get_composicao(companies):
     return text
 
 def status(companies):
-
+    print('1')
     companies_status = get_stocks(companies)
-
+    print('2')
     status, error = get_appreciation(companies_status)
-
+    print('3')
     if (error):
         status = error_message(status, companies)
 
