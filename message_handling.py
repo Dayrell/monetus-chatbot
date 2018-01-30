@@ -90,13 +90,17 @@ def error_message(status, companies):
     return errormessage
 
 def get_stocks(companies):
+    data = json.loads(requests.get('http://alepmaros.me/monetus/stocks/').content)
     
-    for stock in companies['stocks']:
-        companystatus = get_company_status(stock['code'])
-        stock['status'] = companystatus
+
+    for stock in data['last_stocks_updated']:
+        dataCode = stock['fields']['code']
+        
+        for company in companies['stocks']:
+            if (company['code'] == dataCode):
+                company['status'] = stock['fields']['vcp']
 
     return companies
-
 # valid: 0 caso seja um retorno válido
 # valid: 1 caso algum atributo do objeto
 # valid: 2 caso haja uma falha na API
