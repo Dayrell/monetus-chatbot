@@ -83,7 +83,7 @@ def detailed_status(companies):
 def check_time():
     now = datetime.now()
     now_time = now.time()
-    if (time(22,01) <= now.time() <= time(12,25)):
+    if (time(22,1) <= now.time() <= time(12,25)):
         return True
     else:
         return False
