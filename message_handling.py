@@ -76,6 +76,8 @@ def detailed_status(companies):
     return message
 
 def check_time():
+    now = datetime.now()
+    now_time = now.time()
     if (time(22,30) <= now.time() <= time(23,30)):
         print('\n\n\n\n\noi\n\n\n')
 
