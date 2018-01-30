@@ -133,7 +133,7 @@ def get_appreciation(companies):
     total = 0
     error = False
     for stock in companies['stocks']:
-        cp = stock['status']['cp']
+        cp = stock['status']
         share = stock['share']
         total += (share / 100) * cp
 
