@@ -49,6 +49,9 @@ def status(companies):
     if (error):
         status = error_message(status, companies)
 
+    if (check_time()):
+        message += ' (dados do último dia de funcionamento da bolsa)'
+
     return 'Valorização: ' + status
 
 def detailed_status(companies):
@@ -71,15 +74,19 @@ def detailed_status(companies):
 
     message += find_text('website', 'useful') + '\n\n'
     message += 'Valorização: ' + status
-    check_time()
+    
+    if (check_time()):
+        message += ' (dados do último dia de funcionamento da bolsa)'
     
     return message
 
 def check_time():
     now = datetime.now()
     now_time = now.time()
-    if (time(22,30) <= now.time() <= time(23,30)):
-        print('\n\n\n\n\noi\n\n\n')
+    if (time(22,01) <= now.time() <= time(12,25)):
+        return True
+    else:
+        return False
 
 # Return error message case one or more stocks has errors and send detailed infos to user
 def error_message(status, companies):
