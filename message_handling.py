@@ -1,4 +1,5 @@
 import json, requests, simplejson
+from datetime import datetime, time
 from pprint import pprint
 
 # return a string with the response
@@ -40,15 +41,15 @@ def get_composicao(companies):
     return text
 
 def status(companies):
-    print('1')
     companies_status, updatedat = get_stocks(companies)
-    print('2')
     status, error = get_appreciation(companies_status)
-    print('3')
     if (error):
         status = error_message(status, companies)
 
     return 'Valorização: ' + status
+
+    if (is_unavailable()):
+        message += find_text('offline', 'useful')
 
 def detailed_status(companies):
     companies_status, updatedat = get_stocks(companies)
@@ -70,10 +71,21 @@ def detailed_status(companies):
 
     message += find_text('website', 'useful') + '\n\n'
     message += 'Valorização: ' + status
+
+    if (is_unavailable()):
+        message += find_text('offline', 'useful')
     
     return message
 
+def is_unavailable():
+    now = datetime.now()
+    now_time = now.time()
 
+    weekday = datetime.today().weekday()
+    if ((time(22,30) <= now.time() <= time(0,0)) or (time(0,0) <= now.time() <= time(13,10)) or weekday == 5 or weekday == 6):      
+        return True
+    else:
+        return False
 # Return error message case one or more stocks has errors and send detailed infos to user
 def error_message(status, companies):
     errormessage = find_text('erro', 'useful')

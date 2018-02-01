@@ -19,6 +19,10 @@
         {
             "name": "website",
             "text": "Veja mais detalhes e o histórico em nosso site: http://alepmaros.me/monetus/"
+        },
+        {
+            "name": "offline",
+            "text": "\n🔴 A bolsa não está em funcionamento nesse momento. Última atualização: "
         }
     ],
     "random": [
